@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/') # Rerpites to original website if /____ doesnt exist
 def index():
-    return render_template("main.html")
+    return render_template("website.html")
     
 if __name__ == "__main__":
     app.run(debug=True, host="localhost")
