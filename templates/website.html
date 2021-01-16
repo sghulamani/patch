@@ -2,16 +2,36 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='design.css') }}"> <!-- using jinja fuction to pull path -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="static/css/design.css"> <!-- using jinja fuction to pull path -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <title>Price Match</title>
  </head>
  <body>
-     <h1><center> Price Matcharino<center></h1>
-  <div class="search-box">
-   <input type="text" name="" class="Search-txt" placeholder="Input Barcode..."/>
-   <a class="search-btn">
-   
-   </a>
-  </div>
- </body>
+   <div class="container-fluid">
+     <div class="row" style="padding-bottom: 20%;">
+      <div class="col-4"></div>
+       <div class="col-4">
+          <h1 class="text-center">Price Matcharino</h1>
+       </div>
+      <div class="col-4"></div>
+     </div>
+     <div class="row">
+       <div class="col-4"></div>
+       <div class="col-3">
+        <input id="search-box" type="text" class="form-control" placeholder="Input Barcode..."/>
+       </div>
+       <div class="col-1">
+        <button id="btn-search" class="btn btn-primary">Search</button>
+       </div>
+        <div class="col-4"></div> 
+       </div>
+     </div>
+   </div>
+  </body>
+  <script>
+    $('#btn-search').click(function() {
+      alert($('#search-box').val());
+    });
+  </script>
 </html>
