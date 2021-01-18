@@ -1,7 +1,7 @@
 from selBs4 import *
 
 class walmartPrice:
-    soup2 = selBs4('060549008080','https://www.walmart.com/search/?query=').returnsoup()
+    soup2 = selBs4('https://www.walmart.com/search/?query=' + "060549008080" ).returnsoup()
     floatprice = -1
     for item in soup2.find_all("span", {"class": "visuallyhidden"}):
         priceTag= str(item)

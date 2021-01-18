@@ -10,8 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from fake_useragent import UserAgent
 class selBs4: 
-        def __init__(self, bc, hURL):
-                self.bc = bc
+        def __init__(self, hURL):
                 self.hURL = hURL
         
         def  returnsoup(self):
@@ -23,9 +22,9 @@ class selBs4:
             chrome_options.add_argument(f'user-agent={userAgent}')
             # chrome_options.add_argument("--headless")
             driver = webdriver.Chrome(PATH, options=chrome_options)
-            URL = self.hURL + self.bc
+            URL = self.hURL
             driver.get(URL)
-            timeout = .1
+            timeout = 2
             try:
                 time.sleep(0.25)
                 element_present = EC.presence_of_element_located((By.ID, 'global-search-input'))
@@ -35,9 +34,4 @@ class selBs4:
             soup = BeautifulSoup(driver.page_source,"html.parser")
             return soup
       
-def main():
-    pass
-if __name__ == "__main__":
-    main()
-        
     

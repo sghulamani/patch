@@ -1,13 +1,7 @@
-from amazonPrice import *
-from walmartPrice import *
+from returnpricesuseinput import *
 
-finalWalmartPrice= walmartPrice().returnWalmartPrice()
+finalWalmartPrice= returnpricesuseinput(bc).returnWalmartPrice()
 print("The price on walmart is $" + str(finalWalmartPrice))
 
-finalAmazonPrice = amazonPrice().returnAmazonPrice()
+finalAmazonPrice = returnpricesuseinput().returnAmazonPrice()
 print("The price on amazon is $" + str(finalAmazonPrice))
-
-if (finalAmazonPrice > finalWalmartPrice):
-    print("The price for walmart is best!")
-else:
-    print("The price for amazon is best!")
