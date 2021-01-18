@@ -1,14 +1,17 @@
 # from walmartPrice import *
 # from amazonPrice import * 
 from selBs4 import *
-from returnpricesuseinput import * 
+from prices import * 
 
-bcinput = input("Enter barcode...")
-bc = bcinput
-print(bc)
+bc_input = input("Enter barcode...")
+print(bc_input)
 
+start = time.time()
 
+a = prices(bc_input).amazon()
+w = prices(bc_input).walmart()
+e = prices(bc_input).ebay()
 
-
-lowestPrice = min(returnpricesuseinput(bc).returnAmazonPrice(), returnpricesuseinput(bc).returnWalmartPrice(), returnpricesuseinput(bc).returneBayPrice())
+lowestPrice = min(a, w, e)
+print("--- %s seconds ---" % (time.time() - start))
 print("Patched price is $" + str(lowestPrice))
