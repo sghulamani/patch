@@ -1238,3 +1238,6 @@ venv/Scripts/pythonw.exe
 venv/
 .vscode/
 get-pip.py
+amazonPrice.py
+testprice.py
+walmartPrice.py
