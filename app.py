@@ -12,18 +12,20 @@ from selenium.webdriver.common.by import By
 from fake_useragent import UserAgent
 # app = Flask(__name__)
 
+PATH = "C:\Program Files (x86)\chromedriver.exe" 
+
 chrome_options = Options()
 ua = UserAgent(use_cache_server = False, verify_ssl=False)
 userAgent = ua.random
 print(userAgent)
 chrome_options.add_argument(f'user-agent={userAgent}')
-#chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--headless")
 
-driver = webdriver.Chrome(options=chrome_options)
+driver = webdriver.Chrome(PATH, options=chrome_options)
 bc = '029000020764'
 URL = 'https://www.walmart.com/search/?query=' + bc
 driver.get(URL)
-timeout = 30
+timeout = 60
 try:
     time.sleep(0.25)
     element_present = EC.presence_of_element_located((By.ID, 'global-search-input'))
@@ -33,8 +35,17 @@ except TimeoutException:
 
 soup = BeautifulSoup(driver.page_source,"html.parser")
 driver.quit()
-for item in soup.findAll("span", {"class": "visuallyhidden"}):
-    print(item)
+
+for item in soup.find_all("span", {"class": "visuallyhidden"}):
+    priceTag= str(item)
+    if "$" in priceTag:
+        print(priceTag)
+        indexPrice = priceTag.find("$")
+        intPrice = float(priceTag[indexPrice+1:].replace("</span>","")) 
+        print(type(intPrice))
+        print(intPrice)
+        break
+
 
 # #Run the app
 # @app.route('/') # Rerpites to original website if /____ doesnt exist
