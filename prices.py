@@ -32,12 +32,6 @@ class prices:
                 indexSign = priceTag.find("$")
                 floatPrice = float(priceTag[indexSign+1:].replace("</span>","")) 
                 print("the price is $" + str(floatPrice))
-<<<<<<< HEAD
-                return floatPrice
-            else:
-                print("?")              
-=======
                 return floatPrice   
             
->>>>>>> 08475c74ba707803b63b3e23450f4115f2bbe0c0
             
