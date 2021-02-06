@@ -9,25 +9,65 @@
  </head>
  <body>
    <div class="container-fluid">
-     <div class="row" style="padding-bottom: 20%;">
+     <div class="row" style="padding-top: 5%;">
       <div class="col-4"></div>
        <div class="col-4">
-          <h1 class="text-center">Price Matcharino</h1>
+          <h1 class="text-xl-center text-primary">Patch</h1>
        </div>
       <div class="col-4"></div>
      </div>
-     <div class="row">
+
+     <div class="row" style="padding-top: 5%;">
        <div class="col-4"></div>
-       <div class="col-3">
+       <div class="col-4">
         <input id="search-box" type="text" class="form-control" placeholder="Input Barcode..."/>
        </div>
        <div class="col-1">
         <button id="btn-search" class="btn btn-primary">Search</button>
        </div>
-        <div class="col-4"></div> 
-       </div>
-     </div>
-   </div>
+        <div class="col-3"></div> 
+      </div>
+
+      <div class="row" style="padding-top: 5%;">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <div class="card mb-4 border-left-primary shadow py-2">
+              <div class="card-header" style="background-color:inherit">
+                  <h6 class="m-0 font-weight-bold text-primary"><a style="color: inherit" href="https://www.amazon.com" target="_blank">Amazon</a></h6>
+              </div>
+              <span class="text text-center"><label id="aPrice"></label></span>
+          </div>
+        </div>
+      <div class="col-4"></div>
+      </div>
+
+      <div class="row" style="padding-top: 5%;">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <div class="card mb-4 border-left-primary shadow py-2">
+              <div class="card-header" style="background-color:inherit">
+                  <h6 class="m-0 font-weight-bold text-primary"><a style="color: inherit" href="https://www.Walmart.com" target="_blank">Walmart</a></h6>
+              </div>
+              <span class="text text-center"><label id="wPrice"></label></span>
+          </div>
+        </div>
+      <div class="col-4"></div>
+      </div>
+
+      <div class="row" style="padding-top: 5%;">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <div class="card mb-4 border-left-primary shadow py-2">
+              <div class="card-header" style="background-color:inherit">
+                  <h6 class="m-0 font-weight-bold text-primary"><a style="color: inherit" href="https://www.ebay.com" target="_blank">eBay</a></h6>
+              </div>
+              <span class="text text-center"><label id="ePrice"></label></span>
+          </div>
+        </div>
+      <div class="col-4"></div>
+      </div>
+    </div>
+
   </body>
 
   <script>
@@ -35,9 +75,53 @@
 
     $('#btn-search').click(function() {
       bc = $('#search-box').val();
+      GetAmazonPrice();
+      GetWalmartPrice();
+      GetEbayPrice();
     });
 
-    
+    function GetAmazonPrice(){
+      $.ajax({
+        type: "POST",
+        url: "{{ url_for('post_bc_a') }}",
+        contentType: "application/json",
+        data: JSON.stringify({barcode: bc}),
+        dataType: "json",
+        success: function(data){
+          console.log(data)
+
+          $('#aPrice').text(data.data[0])
+        }
+      });
+    }
+
+    function GetWalmartPrice(){
+      $.ajax({
+        type: "POST",
+        url: "{{ url_for('post_bc_w') }}",
+        contentType: "application/json",
+        data: JSON.stringify({barcode: bc}),
+        dataType: "json",
+        success: function(data){
+
+          $('#wPrice').text(data.data[0])
+        }
+      });
+    }
+
+    function GetEbayPrice(){
+      $.ajax({
+        type: "POST",
+        url: "{{ url_for('post_bc_e') }}",
+        contentType: "application/json",
+        data: JSON.stringify({barcode: bc}),
+        dataType: "json",
+        success: function(data){
+
+          $('#ePrice').text(data.data[0])
+        }
+      });
+    }
   </script> 
 
 </html>

@@ -14,6 +14,22 @@ from fake_useragent import UserAgent
 from dotenv import load_dotenv
 
 class selBs4: 
+<<<<<<< HEAD
+=======
+        def __init__(self, hURL):
+                self.hURL = hURL
+        
+        def  returnsoup(self):
+            PATH = 'C:\Program Files (x86)\chromedriver.exe'
+            load_dotenv(dotenv_path="./config.py")
+            machine = os.getenv("machine") 
+            chrome_options = Options()
+            ua = UserAgent(use_cache_server = False, verify_ssl=False)
+            userAgent = ua.random
+            #print(userAgent)
+            chrome_options.add_argument(f'user-agent={userAgent}')
+            chrome_options.add_argument("--headless")
+>>>>>>> 08475c74ba707803b63b3e23450f4115f2bbe0c0
 
     def __init__(self, hURL):
             self.hURL = hURL
