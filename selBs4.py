@@ -23,7 +23,7 @@ class selBs4:
             chrome_options = Options()
             ua = UserAgent(use_cache_server = False, verify_ssl=False)
             userAgent = ua.random
-            print(userAgent)
+            #print(userAgent)
             chrome_options.add_argument(f'user-agent={userAgent}')
             chrome_options.add_argument("--headless")
 

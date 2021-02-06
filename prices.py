@@ -6,15 +6,13 @@ class prices:
         self.bc = bc 
     def amazon(self):
         soup = selBs4('https://www.amazon.com/s?k=' + self.bc).returnsoup()
-        for item in soup.find("span", {"class": "a-offscreen"}):
+        for item in soup.find_all("span", {"class": "a-offscreen"}):
             priceTag= str(item)
             if "$" in priceTag:
                 indexSign = priceTag.find("$")
                 floatPrice = float(priceTag[indexSign+1:].replace("</span>","")) 
                 print("the price is $" + str(floatPrice))
                 return floatPrice
-            else:
-                print("?")
 
     def walmart(self):
         soup = selBs4('https://www.walmart.com/search/?query=' + self.bc).returnsoup()
@@ -25,8 +23,6 @@ class prices:
                 floatPrice = float(priceTag[indexSign+1:].replace("</span>","")) 
                 print("the price is $" + str(floatPrice))
                 return floatPrice
-            else:
-                print("?")
 
     def ebay(self):
         soup = selBs4('https://www.ebay.com/sch/i.html?_from=R40&_nkw=' + self.bc + "&_sop=15").returnsoup()
@@ -36,8 +32,6 @@ class prices:
                 indexSign = priceTag.find("$")
                 floatPrice = float(priceTag[indexSign+1:].replace("</span>","")) 
                 print("the price is $" + str(floatPrice))
-                return floatPrice
-            else:
-                print("?")       
+                return floatPrice   
             
             
