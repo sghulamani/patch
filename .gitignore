@@ -1238,3 +1238,4 @@ venv/Scripts/pythonw.exe
 venv/
 .vscode/
 get-pip.py
+config.py
