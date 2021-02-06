@@ -1,12 +1,12 @@
 from selBs4 import selBs4
 
-class prices:
+class pricescanada:
 
     def __init__(self, bc):
         self.bc = bc 
     def amazon(self):
-        soup = selBs4('https://www.amazon.com/s?k=' + self.bc).returnsoup()
-        for item in soup.find_all("span", {"class": "a-offscreen"}):
+        soup = selBs4('https://www.amazon.ca/s?k=' + self.bc).returnsoup()
+        for item in soup.find_all("span", {"class": "a-size-mini a-link-normal a-text-normal"}):
             priceTag= str(item)
             if "$" in priceTag:
                 indexSign = priceTag.find("$")
@@ -17,7 +17,7 @@ class prices:
                 print("?")
 
     def walmart(self):
-        soup = selBs4('https://www.walmart.com/search/?query=' + self.bc).returnsoup()
+        soup = selBs4('https://www.walmart.ca/search/?query=' + self.bc).returnsoup()
         for item in soup.find_all("span", {"class": "visuallyhidden"}):
             priceTag= str(item)
             if "$" in priceTag:
@@ -29,7 +29,7 @@ class prices:
                 print("?")
 
     def ebay(self):
-        soup = selBs4('https://www.ebay.com/sch/i.html?_from=R40&_nkw=' + self.bc + "&_sop=15").returnsoup()
+        soup = selBs4('https://www.ebay.ca/sch/i.html?_from=R40&_nkw=' + self.bc + "&_sop=15").returnsoup()
         for item in soup.find_all("span", {"class": "s-item__price"}):
             priceTag= str(item)
             if "$" in priceTag:

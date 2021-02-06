@@ -1,1 +1,1 @@
-PATH = 'CHROMEDRIVER_PATH'
+machine = 'machine_name'
