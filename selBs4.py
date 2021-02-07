@@ -27,7 +27,7 @@ class selBs4:
         userAgent = ua.random
         print(userAgent)
         chrome_options.add_argument(f'user-agent={userAgent}')
-        # chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--headless")
 
         if(machine == 'mac'):
             driver = webdriver.Chrome(options=chrome_options)
